@@ -77,9 +77,12 @@ if [ -z "$SSH_AUTH_SOCK" ] ; then
    ssh-add
 fi
 
+alias vish="vim ~/.zshrc && source ~/.zshrc"
+alias du1="du -h --max-depth=1"
 
 alias cdo="cd /opt/brightsparklabs/osmosis"
 alias gcd="gco develop"
+alias gclean="git remote prune origin"
 alias gw="./gradlew"
 alias gpu='git push --set-upstream origin `git symbolic-ref HEAD|sed -r "s:refs/heads/::g"`'
 alias dp="docker ps -a"
@@ -139,3 +142,26 @@ dbu() { docker build -t=$1 .; }
 
 # Show all alias related docker
 dalias() { alias | grep 'docker' | sed "s/^\([^=]*\)=\(.*\)/\1 => \2/"| sed "s/['|\']//g" | sort; }
+
+
+alias startl="sudo -H -u osmosis /opt/brightsparklabs/osmosis/current/osmosis.sh -d -p lowside start"
+alias stopl="sudo -H -u osmosis /opt/brightsparklabs/osmosis/current/osmosis.sh -d -p lowside stop"
+alias downl="sudo -H -u osmosis /opt/brightsparklabs/osmosis/current/osmosis.sh -p lowside downscale"
+alias upl="sudo -H -u osmosis /opt/brightsparklabs/osmosis/current/osmosis.sh -p lowside upscale"
+alias starth="sudo -H -u osmosis /opt/brightsparklabs/osmosis/current/osmosis.sh -d -p highside start"
+alias stoph="sudo -H -u osmosis /opt/brightsparklabs/osmosis/current/osmosis.sh -d -p highside stop"
+alias downh="sudo -H -u osmosis /opt/brightsparklabs/osmosis/current/osmosis.sh -p highside downscale"
+alias uph="sudo -H -u osmosis /opt/brightsparklabs/osmosis/current/osmosis.sh -p highside upscale"
+alias trigger="/opt/brightsparklabs/osmosis/current/service/osmosis-ops/scripts/trigger-download.sh"
+alias startdh="sudo -H -u osmosis /opt/brightsparklabs/osmosis-dev/scripts/osmosis-infrastructure.sh -p highside start"
+alias stopdh="sudo -H -u osmosis /opt/brightsparklabs/osmosis-dev/scripts/osmosis-infrastructure.sh -p highside stop"
+alias startd="sudo -H -u osmosis /opt/brightsparklabs/osmosis-dev/scripts/osmosis-infrastructure.sh start"
+alias stopd="sudo -H -u osmosis /opt/brightsparklabs/osmosis-dev/scripts/osmosis-infrastructure.sh stop"
+alias istartd="sudo -H -u insilico /opt/brightsparklabs/insilico-dev/scripts/insilico-infrastructure.sh start"
+alias istopd="sudo -H -u insilico /opt/brightsparklabs/insilico-dev/scripts/insilico-infrastructure.sh stop"
+alias istart="sudo -H -u insilico /opt/brightsparklabs/insilico/current/insilico.sh -d start"
+alias istop="sudo -H -u insilico /opt/brightsparklabs/insilico/current/insilico.sh stop"
+
+
+
+alias config='/usr/bin/git --git-dir=/home/michael/.cfg/ --work-tree=/home/michael'
